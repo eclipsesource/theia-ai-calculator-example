@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eclipse Workbench - Calculator View</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="workbench">
+    <!-- Toolbar / Menu Bar -->
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <span class="toolbar-label">File</span>
+        <span class="toolbar-label">Edit</span>
+        <span class="toolbar-label">Navigate</span>
+        <span class="toolbar-label">Search</span>
+        <span class="toolbar-label">Run</span>
+        <span class="toolbar-label">Window</span>
+        <span class="toolbar-label">Help</span>
+      </div>
+      <div class="toolbar-actions">
+        <button class="toolbar-btn" title="New">&#9633;</button>
+        <button class="toolbar-btn" title="Save">&#128190;</button>
+        <div class="toolbar-separator"></div>
+        <button class="toolbar-btn" title="Run">&#9654;</button>
+        <button class="toolbar-btn" title="Debug">&#128029;</button>
+      </div>
+    </div>
+
+    <!-- Perspective Bar -->
+    <div class="perspective-bar">
+      <span class="perspective-item active">Calculator</span>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="workbench-body">
+      <!-- Left Panel: Navigator -->
+      <div class="panel panel-left">
+        <div class="view-header">
+          <span class="view-title">Project Explorer</span>
+          <span class="view-actions">
+            <button class="view-action-btn" title="Collapse All">&#9660;</button>
+            <button class="view-action-btn" title="Menu">&#9776;</button>
+          </span>
+        </div>
+        <div class="view-content tree-view">
+          <div class="tree-item expanded">
+            <span class="tree-toggle">&#9660;</span>
+            <span class="tree-icon">&#128194;</span>
+            <span class="tree-label">CalculatorApp</span>
+          </div>
+          <div class="tree-item child">
+            <span class="tree-toggle">&#9660;</span>
+            <span class="tree-icon">&#128194;</span>
+            <span class="tree-label">src</span>
+          </div>
+          <div class="tree-item child child-2 selected">
+            <span class="tree-toggle-leaf"></span>
+            <span class="tree-icon">&#128196;</span>
+            <span class="tree-label">Calculator.java</span>
+          </div>
+          <div class="tree-item child child-2">
+            <span class="tree-toggle-leaf"></span>
+            <span class="tree-icon">&#128196;</span>
+            <span class="tree-label">Display.java</span>
+          </div>
+          <div class="tree-item child">
+            <span class="tree-toggle">&#9654;</span>
+            <span class="tree-icon">&#128194;</span>
+            <span class="tree-label">lib</span>
+          </div>
+          <div class="tree-item child">
+            <span class="tree-toggle-leaf"></span>
+            <span class="tree-icon">&#128196;</span>
+            <span class="tree-label">build.xml</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sash divider -->
+      <div class="sash"></div>
+
+      <!-- Center Panel: Editor Area / Calculator View -->
+      <div class="panel panel-center">
+        <div class="tab-bar">
+          <div class="tab active">
+            <span class="tab-icon">&#128425;</span>
+            <span class="tab-label">Calculator View</span>
+            <span class="tab-close">&times;</span>
+          </div>
+          <div class="tab inactive">
+            <span class="tab-icon">&#128196;</span>
+            <span class="tab-label">Calculator.java</span>
+            <span class="tab-close">&times;</span>
+          </div>
+        </div>
+        <div class="editor-area">
+          <div class="calculator">
+            <div class="display">
+              <div class="previous-operand" id="previousOperand"></div>
+              <div class="current-operand" id="currentOperand">0</div>
+            </div>
+            <div class="buttons">
+              <button class="btn special" data-action="clear">C</button>
+              <button class="btn special" data-action="delete">⌫</button>
+              <button class="btn operator" data-action="operator" data-value="%">%</button>
+              <button class="btn operator" data-action="operator" data-value="÷">÷</button>
+
+              <button class="btn digit" data-action="number" data-value="7">7</button>
+              <button class="btn digit" data-action="number" data-value="8">8</button>
+              <button class="btn digit" data-action="number" data-value="9">9</button>
+              <button class="btn operator" data-action="operator" data-value="×">×</button>
+
+              <button class="btn digit" data-action="number" data-value="4">4</button>
+              <button class="btn digit" data-action="number" data-value="5">5</button>
+              <button class="btn digit" data-action="number" data-value="6">6</button>
+              <button class="btn operator" data-action="operator" data-value="−">−</button>
+
+              <button class="btn digit" data-action="number" data-value="1">1</button>
+              <button class="btn digit" data-action="number" data-value="2">2</button>
+              <button class="btn digit" data-action="number" data-value="3">3</button>
+              <button class="btn operator" data-action="operator" data-value="+">+</button>
+
+              <button class="btn digit zero" data-action="number" data-value="0">0</button>
+              <button class="btn digit" data-action="decimal">.</button>
+              <button class="btn equals" data-action="equals">=</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sash divider -->
+      <div class="sash"></div>
+
+      <!-- Right Panel: Outline / Properties -->
+      <div class="panel panel-right">
+        <div class="view-header">
+          <span class="view-title">Properties</span>
+          <span class="view-actions">
+            <button class="view-action-btn" title="Menu">&#9776;</button>
+          </span>
+        </div>
+        <div class="view-content properties-view">
+          <div class="property-row">
+            <span class="property-label">Type:</span>
+            <span class="property-value">Calculator View</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Mode:</span>
+            <span class="property-value">Standard</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Precision:</span>
+            <span class="property-value">12 digits</span>
+          </div>
+          <div class="property-row">
+            <span class="property-label">Status:</span>
+            <span class="property-value">Ready</span>
+          </div>
+        </div>
+
+        <div class="view-header" style="margin-top: 4px;">
+          <span class="view-title">Outline</span>
+          <span class="view-actions">
+            <button class="view-action-btn" title="Menu">&#9776;</button>
+          </span>
+        </div>
+        <div class="view-content tree-view">
+          <div class="tree-item">
+            <span class="tree-toggle">&#9654;</span>
+            <span class="tree-icon">&#9670;</span>
+            <span class="tree-label">compute()</span>
+          </div>
+          <div class="tree-item">
+            <span class="tree-toggle">&#9654;</span>
+            <span class="tree-icon">&#9670;</span>
+            <span class="tree-label">clear()</span>
+          </div>
+          <div class="tree-item">
+            <span class="tree-toggle">&#9654;</span>
+            <span class="tree-icon">&#9670;</span>
+            <span class="tree-label">appendNumber()</span>
+          </div>
+          <div class="tree-item">
+            <span class="tree-toggle">&#9654;</span>
+            <span class="tree-icon">&#9670;</span>
+            <span class="tree-label">deleteDigit()</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Panel: Problems / Console -->
+    <div class="sash horizontal-sash"></div>
+    <div class="bottom-panel">
+      <div class="tab-bar">
+        <div class="tab active">
+          <span class="tab-label">Problems</span>
+        </div>
+        <div class="tab inactive">
+          <span class="tab-label">Console</span>
+        </div>
+        <div class="tab inactive">
+          <span class="tab-label">Error Log</span>
+        </div>
+      </div>
+      <div class="bottom-panel-content">
+        <div class="problems-list">
+          <div class="problem-item">
+            <span class="problem-icon warning-icon">&#9888;</span>
+            <span class="problem-text">0 errors, 0 warnings, 0 infos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Bar -->
+    <div class="status-bar">
+      <div class="status-left">
+        <span class="status-item">Writable</span>
+        <span class="status-item">Insert</span>
+      </div>
+      <div class="status-right">
+        <span class="status-item">Calculator View</span>
+        <span class="status-separator">|</span>
+        <span class="status-item">Ready</span>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
