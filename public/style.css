@@ -1,0 +1,555 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  font-size: 11px;
+  color: #1A1A1A;
+  background: #F0F0F0;
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ===== Workbench Shell ===== */
+.workbench {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  border: 1px solid #B8B8B8;
+}
+
+/* ===== Toolbar / Menu Bar ===== */
+.toolbar {
+  background: linear-gradient(to bottom, #F8F8F8, #E0E0E0);
+  border-bottom: 1px solid #B8B8B8;
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+  gap: 8px;
+  min-height: 24px;
+}
+
+.toolbar-group {
+  display: flex;
+  gap: 2px;
+}
+
+.toolbar-label {
+  padding: 2px 6px;
+  font-size: 11px;
+  cursor: default;
+}
+
+.toolbar-label:hover {
+  background: #C8DDF2;
+}
+
+.toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  margin-left: 8px;
+  border-left: 1px solid #B8B8B8;
+  padding-left: 6px;
+}
+
+.toolbar-btn {
+  width: 22px;
+  height: 22px;
+  font-size: 12px;
+  background: #E8E8E8;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.toolbar-btn:hover {
+  background: #D8D8D8;
+}
+
+.toolbar-btn:active {
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background: #D0D0D0;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 16px;
+  background: #B8B8B8;
+  margin: 0 3px;
+}
+
+/* ===== Perspective Bar ===== */
+.perspective-bar {
+  background: #3873AB;
+  padding: 2px 8px;
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+  border-bottom: 1px solid #2A5A8A;
+}
+
+.perspective-item {
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 1px 8px;
+}
+
+.perspective-item.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Workbench Body ===== */
+.workbench-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ===== Panels ===== */
+.panel {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #B8B8B8;
+  background: #F0F0F0;
+  overflow: hidden;
+}
+
+.panel-left {
+  width: 200px;
+  min-width: 140px;
+}
+
+.panel-center {
+  flex: 1;
+  min-width: 200px;
+}
+
+.panel-right {
+  width: 180px;
+  min-width: 120px;
+}
+
+/* ===== Sash Dividers ===== */
+.sash {
+  width: 4px;
+  background: #D4D4D4;
+  border-left: 1px solid #B8B8B8;
+  border-right: 1px solid #B8B8B8;
+  cursor: col-resize;
+}
+
+.horizontal-sash {
+  width: auto;
+  height: 4px;
+  background: #D4D4D4;
+  border-top: 1px solid #B8B8B8;
+  border-bottom: 1px solid #B8B8B8;
+  border-left: none;
+  border-right: none;
+  cursor: row-resize;
+}
+
+/* ===== View Header ===== */
+.view-header {
+  background: linear-gradient(to bottom, #F8F8F8, #E0E0E0);
+  border-bottom: 1px solid #B8B8B8;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 20px;
+}
+
+.view-title {
+  font-size: 11px;
+  font-weight: bold;
+  color: #1A1A1A;
+}
+
+.view-actions {
+  display: flex;
+  gap: 1px;
+}
+
+.view-action-btn {
+  width: 16px;
+  height: 16px;
+  font-size: 9px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  color: #717171;
+}
+
+.view-action-btn:hover {
+  border: 1px solid #B8B8B8;
+  background: #E0E0E0;
+}
+
+/* ===== View Content ===== */
+.view-content {
+  flex: 1;
+  overflow: auto;
+  background: #FFFFFF;
+  border-top: none;
+}
+
+/* ===== Tree View ===== */
+.tree-view {
+  padding: 2px 0;
+}
+
+.tree-item {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  padding: 0 4px;
+  cursor: default;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.tree-item.selected {
+  background: #C8DDF2;
+}
+
+.tree-item.child {
+  padding-left: 16px;
+}
+
+.tree-item.child-2 {
+  padding-left: 32px;
+}
+
+.tree-toggle {
+  font-size: 8px;
+  width: 12px;
+  text-align: center;
+  color: #717171;
+}
+
+.tree-toggle-leaf {
+  width: 12px;
+}
+
+.tree-icon {
+  font-size: 11px;
+  margin-right: 3px;
+  width: 14px;
+  text-align: center;
+}
+
+.tree-label {
+  font-size: 11px;
+}
+
+/* ===== Properties View ===== */
+.properties-view {
+  padding: 4px;
+}
+
+.property-row {
+  display: flex;
+  padding: 2px 4px;
+  font-size: 11px;
+  border-bottom: 1px solid #E8E8E8;
+}
+
+.property-label {
+  width: 70px;
+  text-align: right;
+  padding-right: 6px;
+  color: #717171;
+  font-size: 11px;
+}
+
+.property-value {
+  color: #1A1A1A;
+  font-size: 11px;
+}
+
+/* ===== Tab Bar ===== */
+.tab-bar {
+  display: flex;
+  background: #E0E0E0;
+  border-bottom: 1px solid #B8B8B8;
+  min-height: 24px;
+  align-items: flex-end;
+  padding: 0 4px;
+  gap: 1px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  border: 1px solid #A0A0A0;
+  border-bottom: none;
+  border-radius: 0;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.tab.active {
+  background: #FFFFFF;
+  border-top: 2px solid #3873AB;
+  border-left: 1px solid #A0A0A0;
+  border-right: 1px solid #A0A0A0;
+  border-bottom: none;
+  margin-bottom: -1px;
+  padding-bottom: 4px;
+}
+
+.tab.inactive {
+  background: #D4D4D4;
+  border-top: 1px solid #A0A0A0;
+}
+
+.tab-icon {
+  font-size: 11px;
+}
+
+.tab-label {
+  font-size: 11px;
+}
+
+.tab-close {
+  font-size: 12px;
+  color: #717171;
+  margin-left: 4px;
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-close:hover {
+  background: #C8DDF2;
+}
+
+/* ===== Editor Area ===== */
+.editor-area {
+  flex: 1;
+  background: #FFFFFF;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 8px;
+  overflow: auto;
+}
+
+/* ===== Calculator (Eclipse View Style) ===== */
+.calculator {
+  border: 1px solid #B8B8B8;
+  background: #F0F0F0;
+  width: 260px;
+}
+
+.display {
+  background: #FFFFFF;
+  border: 1px solid #B8B8B8;
+  margin: 6px;
+  padding: 6px 8px;
+  text-align: right;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  word-break: break-all;
+}
+
+.previous-operand {
+  color: #717171;
+  font-size: 11px;
+  font-family: "Consolas", "Courier New", monospace;
+  min-height: 1.2em;
+  margin-bottom: 2px;
+}
+
+.current-operand {
+  color: #1A1A1A;
+  font-size: 14px;
+  font-family: "Consolas", "Courier New", monospace;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 6px;
+}
+
+.btn {
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+  border-radius: 0;
+  outline: none;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 6px 4px;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: #E8E8E8;
+  color: #1A1A1A;
+}
+
+.btn:hover {
+  background: #F0F0F0;
+}
+
+.btn:active {
+  border-top: 1px solid #888;
+  border-left: 1px solid #888;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  background: #D0D0D0;
+}
+
+.btn.digit {
+  background: #E8E8E8;
+  color: #1A1A1A;
+}
+
+.btn.operator {
+  background: #D4D4D4;
+  color: #1A1A1A;
+  font-weight: bold;
+}
+
+.btn.operator:hover {
+  background: #E0E0E0;
+}
+
+.btn.special {
+  background: #D4D4D4;
+  color: #C03030;
+  font-weight: bold;
+}
+
+.btn.special:hover {
+  background: #E0E0E0;
+}
+
+.btn.equals {
+  background: #3873AB;
+  color: #FFFFFF;
+  grid-column: span 2;
+  font-weight: bold;
+  font-size: 13px;
+  border-top: 1px solid #5A9AD8;
+  border-left: 1px solid #5A9AD8;
+  border-right: 1px solid #2A5A8A;
+  border-bottom: 1px solid #2A5A8A;
+}
+
+.btn.equals:hover {
+  background: #4A88BF;
+}
+
+.btn.equals:active {
+  border-top: 1px solid #2A5A8A;
+  border-left: 1px solid #2A5A8A;
+  border-right: 1px solid #5A9AD8;
+  border-bottom: 1px solid #5A9AD8;
+  background: #305F8E;
+}
+
+.btn.zero {
+  grid-column: span 2;
+}
+
+/* ===== Bottom Panel ===== */
+.bottom-panel {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  background: #F0F0F0;
+  border-top: 1px solid #B8B8B8;
+}
+
+.bottom-panel-content {
+  flex: 1;
+  background: #FFFFFF;
+  overflow: auto;
+  padding: 4px;
+}
+
+.problems-list {
+  font-size: 11px;
+}
+
+.problem-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  height: 18px;
+}
+
+.warning-icon {
+  color: #C6A020;
+  font-size: 12px;
+}
+
+.problem-text {
+  font-size: 11px;
+  color: #717171;
+}
+
+/* ===== Status Bar ===== */
+.status-bar {
+  background: #E8E8E8;
+  border-top: 1px solid #B8B8B8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 8px;
+  min-height: 20px;
+}
+
+.status-left,
+.status-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-item {
+  font-size: 11px;
+  color: #717171;
+  padding: 0 4px;
+}
+
+.status-separator {
+  color: #B8B8B8;
+  font-size: 11px;
+}
