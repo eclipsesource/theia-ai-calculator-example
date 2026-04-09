@@ -1,0 +1,14 @@
+# Project Info
+
+## Overview
+A simple calculator web application served via a vanilla Node.js HTTP server (no frameworks/dependencies).
+
+## Architecture
+- `server.js` — Static file server using Node.js `http` module, serves files from `public/`. Runs on port 3001.
+- `public/` — Frontend assets (HTML, CSS, JS). Pure vanilla JS with no build step or bundler.
+- Calculator logic lives entirely in `public/script.js` as a single IIFE — no modules or external libraries.
+
+## Key Details
+- No `node_modules` or external dependencies — the project is entirely self-contained.
+- The frontend uses `data-action` / `data-value` attributes on buttons with a single delegated event listener on `.buttons`.
+- Keyboard input is also supported (digits, operators, Enter, Escape, Backspace).
