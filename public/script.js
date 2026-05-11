@@ -89,13 +89,10 @@
     updateDisplay();
   }
 
-  function handleToggleSign() {
-    if (currentInput !== '0' && currentInput !== 'Error') {
-      currentInput = currentInput.startsWith('-')
-        ? currentInput.slice(1)
-        : '-' + currentInput;
-      updateDisplay();
-    }
+  function handleClearEntry() {
+    currentInput = '0';
+    shouldResetInput = false;
+    updateDisplay();
   }
 
   function handlePercent() {
@@ -117,8 +114,8 @@
       case 'operator':    handleOperator(value); break;
       case 'equals':      handleEquals(); break;
       case 'clear':       handleClear(); break;
+      case 'clear-entry': handleClearEntry(); break;
       case 'decimal':     handleDecimal(); break;
-      case 'toggle-sign': handleToggleSign(); break;
       case 'percent':     handlePercent(); break;
     }
   });
