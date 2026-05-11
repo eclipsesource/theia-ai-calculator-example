@@ -98,6 +98,11 @@
     }
   }
 
+  function handleBackspace() {
+    currentInput = currentInput.slice(0, -1);
+    updateDisplay();
+  }
+
   function handlePercent() {
     if (currentInput !== 'Error') {
       currentInput = formatResult(parseFloat(currentInput) / 100);
@@ -119,6 +124,7 @@
       case 'clear':       handleClear(); break;
       case 'decimal':     handleDecimal(); break;
       case 'toggle-sign': handleToggleSign(); break;
+      case 'backspace':   handleBackspace(); break;
       case 'percent':     handlePercent(); break;
     }
   });
@@ -132,14 +138,7 @@
     else if (e.key === '/') { e.preventDefault(); handleOperator('/'); }
     else if (e.key === 'Enter' || e.key === '=') handleEquals();
     else if (e.key === 'Escape') handleClear();
-    else if (e.key === 'Backspace') {
-      if (currentInput.length > 1) {
-        currentInput = currentInput.slice(0, -1);
-      } else {
-        currentInput = '0';
-      }
-      updateDisplay();
-    }
+    else if (e.key === 'Backspace') handleBackspace();
   });
 
   updateDisplay();
